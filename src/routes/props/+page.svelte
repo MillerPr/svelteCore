@@ -1,0 +1,31 @@
+<script lang="ts">
+	import OrderedList from '$lib/components/ordered-list.svelte';
+	let items = ['first', 'second', 'third'];
+	import Anchor from '$lib/components/anchor.svelte';
+	const schoolLink = {
+		href: 'https://www.uchicago.edu/',
+		text: 'UChicago',
+		style: 'color: maroon;'
+	};
+
+	const myHomepage = {
+		href: '/about',
+		text: 'Visit My Portfolio',
+		style: 'font-weight: bold;'
+	};
+
+	const externalLink = {
+		href: 'https://www.example.com',
+		text: 'External Link',
+		style: 'text-decoration: underline;'
+	};
+</script>
+
+<div class="container">
+	<div class="pb-5 font-bold">$props</div>
+	<OrderedList {items} />
+
+	<Anchor {...schoolLink} />
+	<Anchor {...myHomepage} />
+	<Anchor {...externalLink} />
+</div>
