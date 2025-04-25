@@ -1,25 +1,21 @@
 <script lang="ts">
-	let routeArray = [
-		{ route: '', routeName: 'HOME' },
-		{ route: 'state', routeName: '$state' },
-		{ route: 'state/deepstate', routeName: 'deep state' },
-		{ route: 'state/derived', routeName: 'derived state' },
-		{ route: 'props', routeName: '$props' },
-		{ route: 'bindable', routeName: '$bindable' },
-		{ route: 'if', routeName: '#if' },
-		{ route: 'each', routeName: '#each' },
-		{ route: 'snippet', routeName: '#snippet' },
-		{ route: 'render', routeName: '@render' },
-		{ route: 'debug', routeName: '@debug' },
-		{ route: 'style', routeName: 'style:' }
-	];
+	// A route will not show up in the menu until a +page is there. Hah!
+	let routeArray = Object.keys(import.meta.glob('/src/routes/**/+page.svelte')).map((path) => {
+		const route = path.replace('/src/routes/', '').replace('/+page.svelte', '').replace(/\/$/, '');
+		return {
+			route: route,
+			routeName: route.replace(/\d+/, '')
+		};
+	});
+
+	routeArray[0].route = '';
+	routeArray[0].routeName = 'HOME';
 </script>
 
-<div class="container pb-5">
-	<span>Menu: </span>
+<div class="flex h-24 items-center justify-center font-bold">
 	{#each routeArray as { route, routeName }}
 		<span class="px-3">
-			<a href={`/${route}`} class="text-blue-500 hover:underline">
+			<a href={`/${route}`} class="text-red-800 hover:text-red-400">
 				{routeName}
 			</a>
 		</span>

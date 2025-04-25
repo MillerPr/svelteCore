@@ -1,4 +1,9 @@
 <script>
+	import PageNotes from '$lib/components/page-notes.svelte';
+	const pageNotes = [
+		'This example only demonstrates that mutating an array also triggers rendering based on a change to state.',
+		'See the $derived state page for how we update the total.'
+	];
 	let numbers = $state([1, 2, 3, 4]);
 
 	function addNumber() {
@@ -16,3 +21,4 @@
 	</button>
 	<p>Add these up: {numbers.join(' + ')} =</p>
 </div>
+<PageNotes {pageNotes} />

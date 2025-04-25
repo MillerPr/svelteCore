@@ -1,4 +1,10 @@
-<script>
+<script lang="ts">
+	import PageNotes from '$lib/components/page-notes.svelte';
+	let pageNotes = [
+		'The total is derived from the array.',
+		'The array is a state variable. The total is a derived variable.',
+		'We use the .reduce() array method to launch a callback function that adds each value in the array.'
+	];
 	let numbers = $state([1, 2, 3, 4]);
 	const total = $derived(
 		numbers.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
@@ -21,3 +27,4 @@
 		<p>{total} = {numbers.join(' + ')}</p>
 	{/if}
 </div>
+<PageNotes {pageNotes} />

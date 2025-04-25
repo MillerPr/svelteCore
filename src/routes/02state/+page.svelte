@@ -1,4 +1,10 @@
 <script>
+	import PageNotes from '$lib/components/page-notes.svelte';
+	let pageNotes = [
+		'Each button click invokes a function that updates the count. Because count is a state variable, all references to it also update.',
+		'A checkbox is used to toggle a state variable "agreed" between TRUE/FALSE. We set it to FALSE at first. When TRUE, HTML and CSS update.',
+		"The Subscribe button doesn't do anything."
+	];
 	let count = $state(0);
 	function increment() {
 		count += 1;
@@ -33,6 +39,7 @@
 			Subscribe
 		</button>
 	</div>
+	<PageNotes {pageNotes} />
 </div>
 
 <style>
