@@ -3,7 +3,7 @@
 </script>
 
 <div class="container">
-	<div>$bindable</div>
+	<div class="pb-5 font-bold">$bindable</div>
 	<div>What is your name?</div>
 	<input bind:value={userInput} />
 	<div>Hello {userInput}</div>
