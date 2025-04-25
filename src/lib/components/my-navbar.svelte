@@ -1,12 +1,20 @@
 <script lang="ts">
 	// A route will not show up in the menu until a +page is there. Hah!
-	let routeArray = Object.keys(import.meta.glob('/src/routes/**/+page.svelte')).map((path) => {
-		const route = path.replace('/src/routes/', '').replace('/+page.svelte', '').replace(/\/$/, '');
-		return {
-			route: route,
-			routeName: route.replace(/\d+/, '')
-		};
-	});
+	//remove duplicates from routeArray
+
+	let routeArray = Object.keys(import.meta.glob('/src/routes/**/+page.svelte'))
+		.map((path) => {
+			const route = path
+				.replace(/\/\[slug\]\/[^/]*/, '')
+				.replace('/src/routes/', '')
+				.replace('/+page.svelte', '')
+				.replace(/\/$/, '');
+			return {
+				route: route,
+				routeName: route.replace(/\d+/, '')
+			};
+		})
+		.filter((route, index, self) => index === self.findIndex((t) => t.route === route.route));
 
 	routeArray[0].route = '';
 	routeArray[0].routeName = 'HOME';
