@@ -2,6 +2,7 @@
 	import OrderedList from '$lib/components/ordered-list.svelte';
 	let items = ['first', 'second', 'third'];
 	import Anchor from '$lib/components/anchor.svelte';
+	import PageNotes from '$lib/components/page-notes.svelte';
 	let pageNotes = [
 		'The list of first, second, and third leverages a simple ordered list component.',
 		'For the URL link examples, we spread all the properties to an Anchor component with one statement.'
@@ -32,4 +33,6 @@
 	<Anchor {...schoolLink} />
 	<Anchor {...myHomepage} />
 	<Anchor {...externalLink} />
+
+	<PageNotes {pageNotes} />
 </div>
