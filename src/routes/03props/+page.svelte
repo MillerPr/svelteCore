@@ -30,7 +30,12 @@
 	<div class="pb-5 font-bold">$props</div>
 	<OrderedList {items} listStyle="square" />
 
-	<Anchor {...schoolLink} />
+	<div>
+		<Anchor href={schoolLink.href} style={schoolLink.style} text={schoolLink.text} />
+	</div>
+	<div>
+		<Anchor {...schoolLink} />
+	</div>
 	<Anchor {...myHomepage} />
 	<Anchor {...externalLink} />
 
